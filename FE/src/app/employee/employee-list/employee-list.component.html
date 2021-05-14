@@ -1,0 +1,32 @@
+<div class="container-padding">
+  <div *ngIf="employeeList.length > 0; else loading">
+    <table class="table table-hover">
+      <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Hours per week</th>
+        <th scope="col">Updated</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let employee of employeeList" (click)="navigateToTimeRegistrationList(employee.id)">
+        <th scope="row">{{employee.id}}</th>
+        <td>{{employee.name}}</td>
+        <td>{{employee.work_hours_per_week}}</td>
+        <td>{{employee.updated_at | date}}</td>
+        <td><span class="fa fa-clipboard-list"></span> </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="text-center">
+    Henter listen, vent venligst<br />
+    <div class="fa fa-spinner fa-spin"></div>
+  </div>
+</ng-template>
