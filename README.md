@@ -43,8 +43,7 @@ It is more or less a view-only solution without full CRUD implementation.
 - (+) FE/src/app/time-registration/time-registration/time-registration-list/time-registration-list.component.scss
 - (+) FE/src/app/time-registration/time-registration/time-registration-list/time-registration-list.component.ts
 
-## Remarks
-- Code does not calculate difference between worked hours and planed work hours, even though it was meant to. 
+## Remarks 
 - Bootstrap and Font Awesome have been added to the solution. 
 - Global routing has been used instead of local routing.
 - Error validation has been skipped over all.
