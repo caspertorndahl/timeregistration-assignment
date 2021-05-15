@@ -17,6 +17,7 @@ It is more or less a view-only solution without full CRUD implementation.
 - (U) API/routes/api.php
 - (U) API/app/Providers/RouteServiceProvider.php
 - (+) API/app/Http/Requests/EmployeeIndexRequest.php
+- (+) API/app/Http/Requests/EmployeeShowRequest.php
 - (+) API/app/Http/Requests/TimeRegistrationIndexRequest.php
 
 ## Angular / FE changes

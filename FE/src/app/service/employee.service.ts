@@ -14,4 +14,8 @@ export class EmployeeService {
   getEmployeeList(): Observable<IEmployee[]>{
     return this.httpClient.get<IEmployee[]>(environment.api_url + '/employee');
   }
+
+  getEmployee(employeeId: number): Observable<IEmployee>{
+    return this.httpClient.get<IEmployee>(environment.api_url + '/employee/' + employeeId);
+  }
 }

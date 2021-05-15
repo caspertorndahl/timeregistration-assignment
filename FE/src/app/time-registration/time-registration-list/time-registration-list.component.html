@@ -1,39 +1,53 @@
 <div class="container-padding">
-  <div class="text-end">
-    <div class="btn btn-primary" routerLink="employee">Back</div>
-  </div>
-  <div *ngIf="timeRegistrationList.length > 0; else loading">
-    <table class="table table-hover">
-      <thead class="thead-light">
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Week</th>
-        <th scope="col">Date</th>
-        <th scope="col">Start</th>
-        <th scope="col">End</th>
-        <th scope="col">Work hours</th>
-        <th scope="col">Updated</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let timeRegistration of timeRegistrationList">
-        <th scope="row">{{timeRegistration.id}}</th>
-        <td>{{timeRegistration.start | date:'ww'}}</td>
-        <td>{{timeRegistration.start | date:'dd/MM'}}</td>
-        <td>{{timeRegistration.start | date:'HH:mm'}}</td>
-        <td>{{timeRegistration.end | date:'HH:mm'}}</td>
-        <td>{{timeRegistration.workHours}}</td>
-        <td>{{timeRegistration.updated_at | date}}</td>
-      </tr>
-      </tbody>
-    </table>
+  <div class="container-fluid">
+
+    <div *ngIf="hoursCalculated; else loading">
+      <div class="row">
+        <div class="col text-start"><h3>{{employee.name}}</h3></div>
+        <div class="col text-end">
+          <div class="btn btn-primary" routerLink="employee">Back</div>
+        </div>
+      </div>
+
+      <div *ngFor="let workWeek of workWeekList" class="pb-5">
+        <div class="row">
+          <div class="col fw-bold">Week {{workWeek.week_number}}</div>
+          <div class="col">Expected work hours: {{employee.work_hours_per_week}}h</div>
+          <div class="col">Worked hours: {{workWeek.hours}}h {{workWeek.minutes}}m</div>
+          <div class="col" [ngClass]="{'text-success' : workWeek.difference_hours > 0, 'text-danger': workWeek.difference_hours < 0}">
+            Difference: {{workWeek.difference_hours}}h {{workWeek.difference_minutes}}m
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col font-italic">#</div>
+          <div class="col font-italic">Date</div>
+          <div class="col font-italic">Start</div>
+          <div class="col font-italic">End</div>
+          <div class="col font-italic">Updated</div>
+        </div>
+
+        <div *ngFor="let time_registration of workWeek.time_registration_list" class="row">
+          <div class="col">{{time_registration.id}}</div>
+          <div class="col">{{time_registration.start | date: 'dd/MM'}}</div>
+          <div class="col">{{time_registration.start | date: 'HH:mm'}}</div>
+          <div class="col">{{time_registration.end | date: 'HH:mm'}}</div>
+          <div class="col">{{time_registration.updated_at | date}}</div>
+        </div>
+      </div>
+    </div>
 
   </div>
 </div>
 
 <ng-template #loading>
-  <div class="text-center">
-    Henter listen, vent venligst<br />
+  <div *ngIf="timeRegistrationList.length > 0" class="text-center">
+    Beregner timer, vent venligst<br/>
+    <div class="fa fa-spinner fa-spin"></div>
+  </div>
+
+  <div *ngIf="timeRegistrationList.length == 0" class="text-center">
+    Henter listen, vent venligst<br/>
     <div class="fa fa-spinner fa-spin"></div>
   </div>
 </ng-template>

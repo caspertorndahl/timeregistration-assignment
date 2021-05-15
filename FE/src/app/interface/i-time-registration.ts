@@ -4,7 +4,5 @@ export interface ITimeRegistration {
   end: string,
   employee_id: number,
   created_at: string,
-  updated_at: string,
-
-  workHours: any
+  updated_at: string
 }

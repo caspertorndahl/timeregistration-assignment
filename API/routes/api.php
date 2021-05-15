@@ -16,4 +16,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/employee', [EmployeeController::class, 'index']);
+Route::get('/employee/{employee}', [EmployeeController::class, 'show']);
+
 Route::get('/employee/{employee}/timeregistration', [TimeRegistrationController::class, 'index']);
