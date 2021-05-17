@@ -33,6 +33,7 @@ It is more or less a view-only solution without full CRUD implementation.
 - (+) FE/src/app/employee/employee/employee-list/employee-list.component.ts  
 - (+) FE/src/app/interface/i-employee.ts  
 - (+) FE/src/app/interface/i-time-registration.ts  
+- (+) FE/src/app/interface/i-work-week.ts  
 - (+) FE/src/app/navigation-bar/navigation-bar.component.html
 - (+) FE/src/app/navigation-bar/navigation-bar.component.scss
 - (+) FE/src/app/navigation-bar/navigation-bar.component.ts
